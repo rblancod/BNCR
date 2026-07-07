@@ -1982,7 +1982,9 @@ table { max-width: 100%; }
 <style>
 /* ── PLAN DE INCENTIVOS (Zona Asesor) ── */
 .inc-hero{background:linear-gradient(135deg,#5B2A86 0%,#6B3FA0 55%,#7E4FB0 100%);border-radius:14px;padding:22px 26px;color:#fff;display:flex;gap:20px;align-items:flex-start;margin-bottom:18px;box-shadow:0 6px 24px rgba(91,42,134,.25);border-left:6px solid #F4B740;}
-.inc-hero-ico{font-size:36px;background:rgba(255,255,255,.16);border-radius:12px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.inc-hero-ico{width:132px;height:auto;flex-shrink:0;border-radius:10px;overflow:hidden;box-shadow:0 5px 16px rgba(0,0,0,.28);line-height:0;}
+.inc-hero-ico svg{display:block;width:100%;height:auto;}
+@media(max-width:600px){.inc-hero-ico{width:120px;}}
 .inc-hero-body h3{font-family:"Barlow Condensed",sans-serif;font-size:24px;font-weight:800;margin:0 0 8px;color:#fff;}
 .inc-hero-body p{font-size:14px;line-height:1.6;opacity:.96;margin:0 0 14px;}
 .inc-chips{display:flex;flex-wrap:wrap;gap:8px;}
@@ -2006,7 +2008,54 @@ table { max-width: 100%; }
 <!-- ── CONTENIDO GLOBAL: PLAN DE INCENTIVOS ── -->
 <div id="planIncentivosContent" style="display:none;">
   <div class="inc-hero">
-    <div class="inc-hero-ico">🎁</div>
+    <div class="inc-hero-ico" aria-label="Gift Card Walmart" role="img">
+      <svg viewBox="0 0 400 252" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wmCard" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00256b"/>
+            <stop offset="0.55" stop-color="#0a5cb0"/>
+            <stop offset="1" stop-color="#1174c9"/>
+          </linearGradient>
+          <clipPath id="wmClip"><rect x="0" y="0" width="400" height="252" rx="20"/></clipPath>
+        </defs>
+        <g clip-path="url(#wmClip)">
+          <rect x="0" y="0" width="400" height="252" fill="url(#wmCard)"/>
+          <rect x="330" y="0" width="70" height="252" fill="#ffffff"/>
+          <!-- Gift box (white line art) -->
+          <g fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+            <!-- box base, open, slight perspective -->
+            <path d="M70 152 L70 236 L180 236 L180 152"/>
+            <path d="M180 152 L234 134 L234 214 L180 236"/>
+            <path d="M62 152 L180 152 L234 134"/>
+            <line x1="124" y1="152" x2="124" y2="236"/>
+            <!-- flying wrapped lid -->
+            <g transform="rotate(-33 220 96)">
+              <rect x="150" y="72" width="150" height="48" rx="8"/>
+              <line x1="243" y1="72" x2="243" y2="120"/>
+            </g>
+            <!-- bow -->
+            <path d="M300 66 C286 44 250 46 262 74 C236 66 234 100 262 96"/>
+            <path d="M300 66 C314 44 350 46 338 74 C364 66 366 100 338 96"/>
+            <!-- sparkle burst -->
+            <line x1="44" y1="94" x2="70" y2="104"/>
+            <line x1="58" y1="58" x2="72" y2="90"/>
+            <line x1="30" y1="126" x2="62" y2="116"/>
+          </g>
+          <!-- Walmart wordmark + spark on white strip -->
+          <text x="365" y="130" transform="rotate(-90 365 130)" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#0071ce" letter-spacing="-1">Walmart</text>
+          <g transform="translate(365 210)" fill="#ffc220" stroke="#ffc220" stroke-width="5.5" stroke-linecap="round">
+            <line x1="0" y1="-13" x2="0" y2="-5"/>
+            <line x1="0" y1="13" x2="0" y2="5"/>
+            <line x1="-13" y1="0" x2="-5" y2="0"/>
+            <line x1="13" y1="0" x2="5" y2="0"/>
+            <line x1="-9" y1="-9" x2="-3.5" y2="-3.5"/>
+            <line x1="9" y1="9" x2="3.5" y2="3.5"/>
+            <line x1="9" y1="-9" x2="3.5" y2="-3.5"/>
+            <line x1="-9" y1="9" x2="-3.5" y2="3.5"/>
+          </g>
+        </g>
+      </svg>
+    </div>
     <div class="inc-hero-body">
       <h3>Gift Card Walmart</h3>
       <p>A cada ejecutivo(a) se le asignará una <strong>gift card única y reutilizable</strong>. Mensualmente se acreditará el monto correspondiente a las ventas efectivas del mes anterior.</p>
