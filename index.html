@@ -148,6 +148,16 @@ body{font-family:"Barlow",sans-serif;font-size:15px;background:#F0F4FA;color:var
 .icon-dot-fre{background:var(--bn-blue-mid);}
 .icon-dot-rdh{background:#0077B6;}
 .icon-dot-ap{background:var(--bn-green-mid);}
+.contactos-card .contactos-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.contactos-list li{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 14px;background:#F4F8FD;border:1px solid var(--border);border-radius:10px;}
+.contactos-list .tel{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:18px;letter-spacing:.5px;text-decoration:none;white-space:nowrap;}
+.contactos-list .tel:hover{text-decoration:underline;}
+.contactos-list .desc{font-size:13.5px;color:var(--text-mid);flex:1;min-width:150px;}
+.contactos-list .wa{display:inline-flex;align-items:center;gap:4px;background:#25D366;color:#fff !important;font-size:11px;font-weight:700;padding:4px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px;text-decoration:none;white-space:nowrap;}
+.h3-fre .contactos-list .tel{color:var(--bn-blue-mid);}
+.h3-rdh .contactos-list .tel{color:#0077B6;}
+.h3-ap .contactos-list .tel{color:var(--bn-green);}
+.h3-senior .contactos-list .tel{color:var(--senior);}
 
 /* ── COVERAGE ITEMS ── */
 .coverage-item{background:var(--bn-green-ultra);border-left:4px solid var(--bn-green-mid);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin-bottom:10px;}
@@ -819,6 +829,14 @@ table { max-width: 100%; }
   <div class="coverage-item"><strong>📦 Servicio de Mensajería</strong><p>3 eventos al año, límite USD $10 por evento. Transporte de documentos necesarios para denuncia.</p></div>
 </div>
 
+      <div class="content-card contactos-card">
+        <h3><span class="icon-dot-fre"></span>📞 Teléfonos y Contactos</h3>
+        <ul class="contactos-list">
+          <li><a class="tel" href="tel:+50641010007">4101-0007</a><span class="desc">Servicio al cliente / Reclamos / Cancelaciones</span></li>
+          <li><a class="tel" href="tel:+50660404001">6040-4001</a><span class="desc">Línea de asistencias</span></li>
+          <li><a class="tel" href="https://wa.me/50671111120" target="_blank" rel="noopener">7111-1120</a><span class="desc">WhatsApp servicio al cliente / Reclamos</span><a class="wa" href="https://wa.me/50671111120" target="_blank" rel="noopener">🟢 WhatsApp</a></li>
+        </ul>
+      </div>
       </div>
   <div id="fre-planes" class="content-panel h3-fre">
         <div class="content-card">
@@ -1320,6 +1338,16 @@ table { max-width: 100%; }
     </a>
   </div>
 </div>
+      <div class="content-card contactos-card">
+        <h3><span class="icon-dot-rdh"></span>📞 Teléfonos y Contactos</h3>
+        <ul class="contactos-list">
+          <li><a class="tel" href="tel:+50641010000">4101-0000</a><span class="desc">Central telefónica / Contacto general</span></li>
+          <li><a class="tel" href="tel:+50641010007">4101-0007</a><span class="desc">Servicio al cliente / Reclamos</span></li>
+          <li><a class="tel" href="tel:+50660404001">6040-4001</a><span class="desc">Línea de asistencias</span></li>
+          <li><a class="tel" href="https://wa.me/50671111120" target="_blank" rel="noopener">7111-1120</a><span class="desc">WhatsApp servicio al cliente</span><a class="wa" href="https://wa.me/50671111120" target="_blank" rel="noopener">🟢 WhatsApp</a></li>
+          <li><a class="tel" href="tel:+50686992507">8699-2507</a><span class="desc">Línea adicional de soporte / asistencias</span></li>
+        </ul>
+      </div>
       </div>
   <div id="rdh-planes" class="content-panel h3-rdh">
         <div class="content-card">
@@ -1616,6 +1644,14 @@ table { max-width: 100%; }
   <div class="coverage-item"><strong>💳 Forma de pago</strong><p>Débito automático mensual en tarjeta activa del Banco Nacional. Renovación anual automática sin trámites.</p></div>
   <div class="coverage-item"><strong>⏱️ Período de gracia</strong><p>30 días naturales a partir del vencimiento de cada pago. Durante este período, si ocurre un siniestro cubierto, la póliza sigue vigente y la aseguradora paga descontando las primas pendientes.</p></div>
 </div>
+      <div class="content-card contactos-card">
+        <h3><span class="icon-dot-ap"></span>📞 Teléfonos y Contactos</h3>
+        <ul class="contactos-list">
+          <li><a class="tel" href="tel:+50641010000">4101-0000</a><span class="desc">Central telefónica</span></li>
+          <li><a class="tel" href="tel:+50641010007">4101-0007</a><span class="desc">Servicio al cliente / Reclamos</span></li>
+          <li><a class="tel" href="https://wa.me/50624726164" target="_blank" rel="noopener">2472-6164</a><span class="desc">WhatsApp asistencia de viajes (internacional)</span><a class="wa" href="https://wa.me/50624726164" target="_blank" rel="noopener">🟢 WhatsApp</a></li>
+        </ul>
+      </div>
       </div>
   <div id="ap-planes" class="content-panel h3-ap">
         <div class="content-card">
@@ -1873,6 +1909,13 @@ table { max-width: 100%; }
       <div class="coverage-item senior"><strong>✅ Para cualquier persona desde los 18 años</strong><p>Ideal para adultos mayores (mayor riesgo de caídas) y para motorizados (expuestos a accidentes de tránsito). Edad de contratación desde los 18 años, sin tope máximo, con primas escalonadas por rango de edad.</p></div>
       <div class="coverage-item senior"><strong>✅ Amplio paquete de asistencias</strong><p>Incluye asistencias médicas, del hogar, nutricionales, psicológicas y de movilidad sin costo adicional.</p></div>
     </div>
+      <div class="content-card contactos-card">
+        <h3><span class="icon-dot-senior"></span>📞 Teléfonos y Contactos</h3>
+        <ul class="contactos-list">
+          <li><a class="tel" href="tel:+50641010000">4101-0000</a><span class="desc">Central telefónica</span></li>
+          <li><a class="tel" href="tel:+50641010007">4101-0007</a><span class="desc">Servicio al cliente / Reclamos</span></li>
+        </ul>
+      </div>
   </div>
 
   <!-- PLANES -->
