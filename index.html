@@ -571,6 +571,8 @@ table { max-width: 100%; }
 .selecciona-title{text-align:center;margin:36px 0 28px;}
 .selecciona-title h2{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--bn-blue);margin-bottom:8px;}
 .selecciona-line{width:70px;height:4px;background:var(--bn-green-mid);border-radius:3px;margin:0 auto;}
+.grid-sep{grid-column:1/-1;display:flex;justify-content:center;margin:22px 0 8px;}
+.grid-sep-line{height:4px;width:100%;max-width:1180px;background:var(--bn-green-mid);border-radius:3px;}
 
 /* ═══════════ CARDS (icono centrado estilo Banco Popular) ═══════════ */
 .coverage-card{text-align:center;}
@@ -762,12 +764,7 @@ table { max-width: 100%; }
     </div>
   </div>
 
-  <!-- SELECCIONA UN SEGURO -->
   <div class="inicio-medio">
-<div class="selecciona-title">
-    <h2>SELECCIONA UN SEGURO</h2>
-    <div class="selecciona-line"></div>
-  </div>
 
   <!-- CARDS -->
   <div class="coverage-grid">
@@ -791,6 +788,7 @@ table { max-width: 100%; }
       <h2>SENIOR · Accidentes Personales</h2>
       <p>Protección ante fracturas por accidente — ideal para adultos mayores y motorizados</p>
     </div>
+    <div class="grid-sep"><div class="grid-sep-line"></div></div>
     <div class="coverage-card cc-calc" onclick="showPanel('calculadora')">
       <div class="card-icon">🧮</div>
       <h2>Calculadora de Incentivos</h2>
