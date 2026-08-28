@@ -627,6 +627,7 @@ table { max-width: 100%; }
 .cc-dash h2{color:#0E7490;}
 .cc-dash .card-icon{color:#0E7490;}
 .dash-frame{background:#eef3f9;}
+@media(min-width:1025px){.coverage-card.cc-calc{grid-column:2;}.coverage-card.cc-dash{grid-column:3;}}
 .calc-back{display:inline-flex;align-items:center;gap:8px;background:var(--bn-blue-mid);color:#fff;border:none;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.5px;padding:10px 20px;border-radius:30px;cursor:pointer;margin-bottom:14px;transition:background .2s;}
 .calc-back:hover{background:var(--bn-blue);}
 .calc-frame{width:100%;height:calc(100vh - 160px);min-height:600px;border:0;border-radius:14px;box-shadow:var(--shadow-lg);background:#0A1A2B;display:block;}
@@ -1604,8 +1605,8 @@ load();
     <div class=&quot;card accent-green&quot;>
       <h3>🎯 Meta Anual de Primas</h3>
       <div class=&quot;grid-2&quot;>
-        <div class=&quot;form-group&quot;><label>Meta Anual de Primas (₡)</label><input type=&quot;number&quot; id=&quot;metaAnual&quot; value=&quot;1165385&quot; onchange=&quot;actualizarCalculos()&quot;></div>
-        <div class=&quot;form-group&quot;><label>Cumplimiento Actual / Alcance (₡)</label><input type=&quot;number&quot; id=&quot;cumplimientoActual&quot; value=&quot;239400&quot; onchange=&quot;actualizarCalculos()&quot;></div>
+        <div class=&quot;form-group&quot;><label>Meta Anual de Primas (₡)</label><input type=&quot;number&quot; id=&quot;metaAnual&quot; value=&quot;0&quot; onchange=&quot;actualizarCalculos()&quot;></div>
+        <div class=&quot;form-group&quot;><label>Cumplimiento Actual / Alcance (₡)</label><input type=&quot;number&quot; id=&quot;cumplimientoActual&quot; value=&quot;0&quot; onchange=&quot;actualizarCalculos()&quot;></div>
       </div>
       <div id=&quot;metricasActuales&quot;></div>
       <div class=&quot;progress-bar&quot;><div id=&quot;progressFill&quot; class=&quot;progress-fill&quot; style=&quot;width:0%&quot;>0%</div></div>
@@ -1639,9 +1640,9 @@ load();
     <div class=&quot;card accent-blue&quot;>
       <h3>👤 Personal por Puesto</h3>
       <div class=&quot;grid-3&quot;>
-        <div class=&quot;form-group&quot;><label>Cantidad de Asesores</label><input type=&quot;number&quot; id=&quot;cantAsesores&quot; value=&quot;3&quot; min=&quot;0&quot; onchange=&quot;calcularDistribucion()&quot;></div>
-        <div class=&quot;form-group&quot;><label>Cantidad de Enlaces</label><input type=&quot;number&quot; id=&quot;cantEnlaces&quot; value=&quot;2&quot; min=&quot;0&quot; onchange=&quot;calcularDistribucion()&quot;></div>
-        <div class=&quot;form-group&quot;><label>Cantidad de Ejecutivos</label><input type=&quot;number&quot; id=&quot;cantEjecutivos&quot; value=&quot;2&quot; min=&quot;0&quot; onchange=&quot;calcularDistribucion()&quot;></div>
+        <div class=&quot;form-group&quot;><label>Cantidad de Asesores</label><input type=&quot;number&quot; id=&quot;cantAsesores&quot; value=&quot;0&quot; min=&quot;0&quot; onchange=&quot;calcularDistribucion()&quot;></div>
+        <div class=&quot;form-group&quot;><label>Cantidad de Enlaces</label><input type=&quot;number&quot; id=&quot;cantEnlaces&quot; value=&quot;0&quot; min=&quot;0&quot; onchange=&quot;calcularDistribucion()&quot;></div>
+        <div class=&quot;form-group&quot;><label>Cantidad de Ejecutivos</label><input type=&quot;number&quot; id=&quot;cantEjecutivos&quot; value=&quot;0&quot; min=&quot;0&quot; onchange=&quot;calcularDistribucion()&quot;></div>
       </div>
     </div>
     <div class=&quot;card accent-green&quot;>
@@ -1728,7 +1729,7 @@ function primaTexto(c){
   return t;
 }
 
-let datos = { metaAnual:1165385, cumplimientoActual:239400, mesesRestantes:1, diasHabiles:0, nombreOficina:'',
+let datos = { metaAnual:0, cumplimientoActual:0, mesesRestantes:1, diasHabiles:0, nombreOficina:'',
   puestos:{ asesores:{cantidad:3,peso:50}, enlaces:{cantidad:2,peso:20}, ejecutivos:{cantidad:2,peso:30} } };
 
 // ---- Período (mes/año elegidos) / días hábiles ----
@@ -1930,11 +1931,11 @@ function limpiarDatos(){
   try{ localStorage.removeItem(STORE_KEY); }catch(e){}
   // valores por defecto
   document.getElementById('nombreOficina').value='';
-  document.getElementById('metaAnual').value='1165385';
-  document.getElementById('cumplimientoActual').value='239400';
-  document.getElementById('cantAsesores').value='3';
-  document.getElementById('cantEnlaces').value='2';
-  document.getElementById('cantEjecutivos').value='2';
+  document.getElementById('metaAnual').value='0';
+  document.getElementById('cumplimientoActual').value='0';
+  document.getElementById('cantAsesores').value='0';
+  document.getElementById('cantEnlaces').value='0';
+  document.getElementById('cantEjecutivos').value='0';
   document.getElementById('pesoAsesores').value='50';
   document.getElementById('pesoEnlaces').value='20';
   document.getElementById('pesoEjecutivos').value='30';
