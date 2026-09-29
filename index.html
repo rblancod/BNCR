@@ -1110,7 +1110,7 @@ footer{text-align:center;color:var(--muted);font-size:.74rem;margin-top:34px;lin
           <th style=&quot;min-width:120px&quot;>Producto</th>
           <th style=&quot;min-width:130px&quot;>N° Póliza</th>
           <th style=&quot;min-width:130px&quot;>Cédula</th>
-          <th style=&quot;min-width:110px&quot;>Prima (₡)</th>
+          <th style=&quot;min-width:190px&quot;>Plan / Prima</th>
           <th style=&quot;min-width:130px&quot;>1er cobro</th>
           <th style=&quot;min-width:130px&quot;>2do cobro</th>
           <th style=&quot;min-width:120px&quot;>¿Aplica?</th>
@@ -1194,6 +1194,14 @@ footer{text-align:center;color:var(--muted);font-size:.74rem;margin-top:34px;lin
 <script>
 /* ================= CONFIGURACIÓN ================= */
 const PRODUCTOS = ['FRE','RDH','AP','SENIOR','Tiquitos','Protección Hospitalaria'];
+const PLANES = {
+  'FRE': [ {l:'Plan 2',v:4600},{l:'Plan 3',v:5000},{l:'Plan 4',v:5500},{l:'Plan 5',v:6900},{l:'Plan 6',v:8200},{l:'Plan 7',v:9500},{l:'Plan 8',v:10100} ],
+  'RDH': [ {l:'Mensual · Plan 1',v:5800},{l:'Mensual · Plan 2',v:6350},{l:'Mensual · Plan 3',v:6850},{l:'Anual · Plan 1',v:69600},{l:'Anual · Plan 2',v:76200},{l:'Anual · Plan 3',v:82200} ],
+  'SENIOR': [ {l:'18-65 años',v:5300},{l:'66-75 años',v:7100},{l:'76-85 años',v:9200},{l:'86+ años',v:21700} ],
+  'AP': [ {l:'18-64 años',v:2900},{l:'65-74 años',v:9350},{l:'75+ años',v:18450} ],
+  'Tiquitos': [ {l:'Plan 1',v:9100},{l:'Plan 2',v:10200},{l:'Plan 3',v:11500},{l:'Plan 4',v:13500},{l:'Plan 5',v:16500} ],
+  'Protección Hospitalaria': [ {l:'18-64 · Plan 1',v:2600},{l:'18-64 · Plan 2',v:3000},{l:'18-64 · Plan 3',v:3400},{l:'18-64 · Plan 4',v:3800},{l:'18-64 · Retención',v:1700},{l:'65-74 · Plan 1',v:4300},{l:'65-74 · Plan 2',v:5600},{l:'65-74 · Plan 3',v:7000},{l:'65-74 · Plan 4',v:8300},{l:'65-74 · Retención',v:2500},{l:'75+ · Plan 1',v:7200},{l:'75+ · Plan 2',v:9800},{l:'75+ · Plan 3',v:12300},{l:'75+ · Plan 4',v:14900},{l:'75+ · Retención',v:4000} ]
+};
 const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
 const ESCALA = [
@@ -1272,6 +1280,18 @@ function addRow(n = 1){
   recalc();
 }
 
+function fillPlanes(selEl, prod, val){
+  const fmt = n => '₡'+Math.round(n||0).toLocaleString('es-CR');
+  const list = PLANES[prod] || [];
+  selEl.innerHTML = '<option value=&quot;&quot;>'+(prod ? 'Elegir plan…' : '—')+'</option>'
+    + list.map(p => '<option value=&quot;'+p.v+'&quot;>'+p.l+' — '+fmt(p.v)+'</option>').join('');
+  selEl.disabled = !prod;
+  if(val!==undefined &amp;&amp; val!==null &amp;&amp; val!==''){
+    selEl.value = String(val);
+    if(selEl.value !== String(val)){ const o=document.createElement('option'); o.value=String(val); o.textContent='Prima '+fmt(val); selEl.appendChild(o); selEl.value=String(val); }
+  } else { selEl.value=''; }
+  selEl.classList.toggle('empty', !selEl.value);
+}
 function buildRow(r){
   const tr = document.createElement('tr');
   tr.id = 'tr-' + r.id;
@@ -1283,7 +1303,7 @@ function buildRow(r){
     </select></td>
     <td><input type=&quot;text&quot; placeholder=&quot;N° de póliza&quot;></td>
     <td><input type=&quot;text&quot; placeholder=&quot;Cédula&quot;></td>
-    <td><input type=&quot;number&quot; placeholder=&quot;0&quot; min=&quot;0&quot; step=&quot;100&quot;></td>
+    <td><select class=&quot;empty&quot; style=&quot;width:100%&quot;><option value=&quot;&quot;>Elegir plan…</option></select></td>
     <td><input type=&quot;date&quot;></td>
     <td><input type=&quot;date&quot;></td>
     <td id=&quot;est-${r.id}&quot;></td>
@@ -1294,10 +1314,11 @@ function buildRow(r){
   const [sel, pol, ced, prima, c1, c2] = tr.querySelectorAll('select,input');
 
   sel.value = r.prod;
-  sel.onchange = () => { r.prod = sel.value; sel.classList.toggle('empty', !sel.value); recalc(); };
+  fillPlanes(prima, r.prod, r.prima);
+  sel.onchange = () => { r.prod = sel.value; sel.classList.toggle('empty', !sel.value); r.prima = ''; fillPlanes(prima, r.prod, ''); recalc(); };
   pol.oninput   = () => { r.pol   = pol.value; save(); };
   ced.oninput   = () => { r.ced   = ced.value; save(); };
-  prima.oninput = () => { r.prima = prima.value; recalc(); };
+  prima.onchange = () => { r.prima = prima.value; prima.classList.toggle('empty', !prima.value); recalc(); };
   c1.onchange   = () => { r.c1    = c1.value; recalc(); };
   c2.onchange   = () => { r.c2    = c2.value; recalc(); };
 
@@ -1441,10 +1462,10 @@ function loadDemo(){
   };
   for(let i=0;i<12;i++) mk('FRE', 4600);
   mk('FRE', 6900, 1);
-  for(let i=0;i<6;i++) mk('RDH', 8500);
+  for(let i=0;i<6;i++) mk('RDH', 6850);
   mk('RDH', 69600);
-  for(let i=0;i<3;i++) mk('AP', 3900);
-  for(let i=0;i<2;i++) mk('SENIOR', 5200);
+  for(let i=0;i<3;i++) mk('AP', 2900);
+  for(let i=0;i<2;i++) mk('SENIOR', 5300);
   addRow(2);
 }
 
