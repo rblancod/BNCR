@@ -3572,19 +3572,35 @@ calcularDistribucion();
 
   <div id="hosp-planes" class="content-panel h3-hosp">
     <div class="content-card">
-      <h3><span class="icon-dot-hosp"></span>Planes y Primas — Tasa Mensual del Cliente</h3>
+      <h3><span class="icon-dot-hosp"></span>Planes y Primas Mensuales</h3>
       <div class="planes-table-wrap">
         <table class="planes-tbl">
-          <thead><tr class="th-hosp"><th class="col-header">Plan</th><th>Cobertura (hospitalización)</th><th>Monto</th><th>18 a 64 años</th><th>65 a 74 años</th><th>75 años o más</th></tr></thead>
+          <thead><tr class="th-hosp"><th class="col-header">Cobertura / Prima mensual</th><th>Plan 1</th><th>Plan 2</th><th>Plan 3</th><th>Plan 4</th></tr></thead>
           <tbody>
-            <tr><td><strong>Plan 1</strong></td><td>3 a 15 días (1 cuota)</td><td>₡220.000</td><td class="prima-val">₡2.600</td><td>₡4.300</td><td>₡7.200</td></tr>
-            <tr><td><strong>Plan 2</strong></td><td>16 a 30 días (2 cuotas)</td><td>₡330.000</td><td class="prima-val">₡3.000</td><td>₡5.600</td><td>₡9.800</td></tr>
-            <tr><td><strong>Plan 3</strong></td><td>31 a 45 días (3 cuotas)</td><td>₡440.000</td><td class="prima-val">₡3.400</td><td>₡7.000</td><td>₡12.300</td></tr>
-            <tr><td><strong>Plan 4</strong></td><td>46 días o más (4 cuotas)</td><td>₡550.000</td><td class="prima-val">₡3.800</td><td>₡8.300</td><td>₡14.900</td></tr>
+            <tr class="prima-row"><td><strong>Beneficio por cuota — hospitalización por enfermedad o accidente</strong></td><td class="prima-val">₡220.000</td><td class="prima-val">₡330.000</td><td class="prima-val">₡440.000</td><td class="prima-val">₡550.000</td></tr>
+            <tr><td>Prima mensual · 18 a 64 años</td><td>₡2.600</td><td>₡3.000</td><td>₡3.400</td><td>₡3.800</td></tr>
+            <tr><td>Prima mensual · 65 a 74 años</td><td>₡4.300</td><td>₡5.600</td><td>₡7.000</td><td>₡8.300</td></tr>
+            <tr><td>Prima mensual · 75 años o más</td><td>₡7.200</td><td>₡9.800</td><td>₡12.300</td><td>₡14.900</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="planes-nota">💡 La renta se paga por el periodo definido según los días de hospitalización. <strong>Momentos de oferta:</strong> apertura de crédito y apertura de tarjeta. <strong>Canal:</strong> sucursales del Banco Nacional.</div>
+      <div class="planes-nota">💡 El cliente elige un <strong>plan (1 a 4)</strong> y paga la prima mensual según su edad. <strong>Momentos de oferta:</strong> apertura de crédito y de tarjeta. <strong>Canal:</strong> sucursales del Banco Nacional.</div>
+    </div>
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>Tabla de Indemnización — según días de hospitalización</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:14px;">La indemnización se paga en <strong>cuotas según los días de hospitalización</strong> (por enfermedad o accidente). Cada cuota equivale al beneficio del plan elegido: <strong>a más días, más cuotas</strong>.</p>
+      <div class="planes-table-wrap">
+        <table class="planes-tbl">
+          <thead><tr class="th-hosp"><th class="col-header">Días hospitalizado</th><th>Beneficio</th><th>Plan 1</th><th>Plan 2</th><th>Plan 3</th><th>Plan 4</th></tr></thead>
+          <tbody>
+            <tr><td>De 3 a 15 días</td><td><strong>1 cuota</strong></td><td>₡220.000</td><td>₡330.000</td><td>₡440.000</td><td>₡550.000</td></tr>
+            <tr><td>De 16 a 30 días</td><td><strong>2 cuotas</strong></td><td>₡440.000</td><td>₡660.000</td><td>₡880.000</td><td>₡1.100.000</td></tr>
+            <tr><td>De 31 a 45 días</td><td><strong>3 cuotas</strong></td><td>₡660.000</td><td>₡990.000</td><td>₡1.320.000</td><td>₡1.650.000</td></tr>
+            <tr><td>De 46 días o más</td><td><strong>4 cuotas</strong></td><td>₡880.000</td><td>₡1.320.000</td><td>₡1.760.000</td><td>₡2.200.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="planes-nota">💡 <strong>Ejemplo:</strong> con el <strong>Plan 2</strong>, una hospitalización de 20 días (2 cuotas) paga <strong>₡660.000</strong>.</div>
     </div>
   </div>
 
@@ -3625,7 +3641,7 @@ calcularDistribucion();
       <h3><span class="icon-dot-hosp"></span>💬 Manejo de Objeciones</h3>
       <div class="objecion-item"><div class="objecion-q">"Ya tengo la CCSS / un seguro médico."</div><div class="objecion-a">"La CCSS cubre la atención médica, pero no le paga las cuotas del crédito, la tarjeta ni los gastos del hogar mientras está internado. Protección Hospitalaria le da una renta en efectivo para cubrir esas obligaciones."</div></div>
       <div class="objecion-item"><div class="objecion-q">"¿Y si nunca me hospitalizan?"</div><div class="objecion-a">"Es la tranquilidad de saber que, si sucede —por accidente o enfermedad—, no descuidará sus pagos ni afectará su historial crediticio. Desde ₡2.600 al mes."</div></div>
-      <div class="objecion-item"><div class="objecion-q">"Me parece un gasto extra."</div><div class="objecion-a">"El Plan 1 arranca desde ₡2.600 al mes, con montos de hasta ₡550.000 según el plan. Es muy accesible frente al alivio que brinda en un momento difícil."</div></div>
+      <div class="objecion-item"><div class="objecion-q">"Me parece un gasto extra."</div><div class="objecion-a">"El Plan 1 arranca desde ₡2.600 al mes, con una indemnización de hasta ₡2.200.000 según el plan y los días de hospitalización. Es muy accesible frente al alivio que brinda en un momento difícil."</div></div>
     </div>
   </div>
 </div>
@@ -3637,7 +3653,7 @@ calcularDistribucion();
     <div class="content-card" style="background:linear-gradient(135deg,var(--ho-ultra),#FFF5F7);border-left:4px solid var(--ho-mid);"><h3><span class="icon-dot-hosp"></span>💎 Por qué el cliente debe adquirirlo</h3>
       <div class="coverage-item hosp"><strong>💧 Alivio financiero inmediato</strong><p>Renta en efectivo para cubrir cuotas y gastos mientras está hospitalizado, por accidente o enfermedad.</p></div>
       <div class="coverage-item hosp"><strong>🛡️ Protege su crédito</strong><p>Evita atrasos en el pago del crédito y la tarjeta durante la hospitalización.</p></div>
-      <div class="coverage-item hosp"><strong>💰 Accesible</strong><p>Planes desde ₡2.600 al mes, con montos de hasta ₡550.000 según el plan.</p></div>
+      <div class="coverage-item hosp"><strong>💰 Accesible</strong><p>Planes desde ₡2.600 al mes, con una indemnización de hasta ₡2.200.000 según el plan y los días de hospitalización.</p></div>
       <div class="coverage-item hosp"><strong>🚑 Asistencias incluidas</strong><p>Teledoctor, ambulancia, médica domiciliar, enfermería y más, sin costo adicional.</p></div>
     </div>
   </div>
@@ -3662,7 +3678,7 @@ calcularDistribucion();
     <div class="content-card"><h3><span class="icon-dot-hosp"></span>Manejo de Objeciones</h3>
       <div class="objecion-item"><div class="objecion-q">"Ya tengo la CCSS / un seguro médico."</div><div class="objecion-a">"La CCSS cubre la atención médica, pero no le paga las cuotas del crédito, la tarjeta ni los gastos del hogar mientras está internado. Este seguro le da una renta en efectivo para esas obligaciones."</div></div>
       <div class="objecion-item"><div class="objecion-q">"¿Y si nunca me hospitalizan?"</div><div class="objecion-a">"Es la tranquilidad de saber que, si sucede, no descuidará sus pagos ni afectará su historial crediticio. Desde ₡2.600 al mes."</div></div>
-      <div class="objecion-item"><div class="objecion-q">"Me parece un gasto extra."</div><div class="objecion-a">"Hay planes desde ₡2.600 al mes, con montos de hasta ₡550.000. Es muy accesible frente al alivio que brinda."</div></div>
+      <div class="objecion-item"><div class="objecion-q">"Me parece un gasto extra."</div><div class="objecion-a">"Hay planes desde ₡2.600 al mes, con una indemnización de hasta ₡2.200.000. Es muy accesible frente al alivio que brinda."</div></div>
     </div>
   </div>
   <div class="asesor-tab-content h3-hosp" data-asesor-tab="exclusiones">
