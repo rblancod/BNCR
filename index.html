@@ -642,6 +642,23 @@ table { max-width: 100%; }
 .cc-tiquitos::before{background:linear-gradient(90deg,var(--tq-mid),var(--tq-orange));}
 .cc-tiquitos h2{color:var(--tq-deep);}
 .cc-tiquitos .card-icon{color:var(--tq-deep);}
+/* ═══════════ PROTECCIÓN HOSPITALARIA ═══════════ */
+:root{ --ho:#BE123C; --ho-mid:#E11D48; --ho-light:#FB7185; --ho-pale:#FFE4EA; --ho-ultra:#FFF1F4; --ho-deep:#9F1239; }
+.ph-hosp{background:linear-gradient(135deg,var(--ho) 0%,var(--ho-mid) 55%,var(--ho-light) 100%);}
+.icon-dot-hosp{width:11px;height:11px;border-radius:3px;transform:rotate(45deg);flex-shrink:0;background:var(--ho-mid);}
+.h3-hosp .content-card h3{color:var(--ho-deep);}
+.h3-hosp .icon-dot-hosp{background:var(--ho-mid);}
+.coverage-item.hosp{background:var(--ho-pale);border-left-color:var(--ho-mid);}
+.th-hosp th{background:var(--ho);color:white;border-right:1px solid rgba(255,255,255,.2);}
+.hosp-panel .sub-btn:hover{border-color:var(--ho-mid);color:var(--ho-deep);background:var(--ho-pale);}
+.hosp-panel .sub-btn.active{background:var(--ho-mid);border-color:var(--ho-mid);color:white;box-shadow:0 3px 14px rgba(190,18,60,.35);}
+.cc-hosp::before{background:linear-gradient(90deg,var(--ho-mid),var(--ho-light));}
+.cc-hosp h2{color:var(--ho-deep);}
+.cc-hosp .card-icon{color:var(--ho-deep);}
+.accion-card-hosp{background:var(--ho-pale);border:2px solid var(--ho-light);}
+.accion-card-title.hosp{color:var(--ho-deep);}
+.accion-link-hosp{background:var(--ho-mid);}
+.accion-link-hosp:hover{background:var(--ho);}
 /* animalitos decorativos */
 .tq-header{position:relative;overflow:hidden;}
 .tq-head-deco{position:absolute;pointer-events:none;z-index:0;opacity:.9;}
@@ -779,6 +796,7 @@ table { max-width: 100%; }
     <button class="nav-pill" onclick="showPanel('ap')">👨‍👩‍👧 AP Asistencias</button>
     <button class="nav-pill" onclick="showPanel('senior')">🦴 SENIOR</button>
     <button class="nav-pill" onclick="showPanel('tiquitos')">🐸 Tiquitos</button>
+    <button class="nav-pill" onclick="showPanel('hosp')">🩺 Protección Hospitalaria</button>
   </div>
 </nav>
 
@@ -823,6 +841,11 @@ table { max-width: 100%; }
       <div class="card-icon">🐸</div>
       <h2>Tiquitos · Seguro Estudiantil</h2>
       <p>Protección por accidentes para estudiantes: muerte accidental, incapacidad y gastos médicos</p>
+    </div>
+    <div class="coverage-card cc-hosp" onclick="showPanel('hosp')">
+      <div class="card-icon">🩺</div>
+      <h2>Protección Hospitalaria</h2>
+      <p>Renta diaria por hospitalización por accidente o enfermedad, para cubrir sus obligaciones</p>
     </div>
     <div class="grid-sep"><div class="grid-sep-line"></div></div>
     <div class="coverage-card cc-calc" onclick="showPanel('calculadora')">
@@ -3463,6 +3486,181 @@ calcularDistribucion();
   </div>
 </div>
 
+<!-- ======================== PROTECCIÓN HOSPITALARIA ======================== -->
+<div id="panel-hosp" class="panel product-panel hosp-panel">
+<div class="product-header ph-hosp" style="border-radius:16px;">
+    <h2>🩺 Protección Hospitalaria</h2>
+    <p>Renta diaria por hospitalización a causa de accidente o enfermedad — alivio financiero para sus obligaciones · Banco Nacional de Costa Rica</p>
+  </div>
+  <div class="sub-nav">
+    <button class="sub-btn active" onclick="showSub('hosp','que-cubre',this)">✅ Qué Cubre</button>
+    <button class="sub-btn" onclick="showSub('hosp','planes',this)">💰 Planes</button>
+    <button class="sub-btn" onclick="showSub('hosp','activacion',this)">🚀 Gestionar Activación</button>
+    <button class="sub-btn" onclick="showSub('hosp','cierre',this)">🎯 Cierre Efectivo</button>
+  </div>
+
+  <div id="hosp-que-cubre" class="content-panel active h3-hosp">
+    <div class="content-card" style="background:linear-gradient(135deg,var(--ho-ultra),#ffffff);border-left:4px solid var(--ho-mid);">
+      <h3><span class="icon-dot-hosp"></span>¿Qué es Protección Hospitalaria?</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.7;">Protección que brinda <strong>apoyo económico al cliente en caso de hospitalización</strong>, cubriendo sus obligaciones financieras por un periodo definido. Según el número de días de hospitalización, se le cubre un monto sobre sus obligaciones financieras. Proporciona <strong>alivio financiero rápido y oportuno</strong> para preservar la estabilidad financiera del asegurado.</p>
+    </div>
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>Cobertura</h3>
+      <div class="coverage-item hosp"><strong>🏥 Renta diaria por hospitalización</strong><p>Paga una renta por hospitalización a causa de un <strong>accidente o enfermedad</strong>. Según el número de días de hospitalización, se cubre un monto sobre las obligaciones financieras del cliente.</p></div>
+    </div>
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>Condiciones de la Cobertura</h3>
+      <div class="coverage-item hosp"><strong>⏳ Periodo de carencia</strong><p>Hospitalización por <strong>enfermedad</strong>: 30 días naturales. Hospitalización por <strong>accidente</strong>: sin periodo de carencia.</p></div>
+      <div class="coverage-item hosp"><strong>➖ Deducible</strong><p>Corresponde a los <strong>primeros 2 días</strong> de hospitalización.</p></div>
+      <div class="coverage-item hosp"><strong>📆 Máximo de días a indemnizar</strong><p>Por <strong>accidente</strong>: hasta 180 días. Por <strong>enfermedad</strong>: hasta 365 días. Las hospitalizaciones sucesivas por la misma causa, separadas por menos de 365 días, se consideran continuación de la anterior.</p></div>
+    </div>
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>Asistencias Incluidas</h3>
+      <div class="planes-table-wrap">
+        <table class="planes-tbl">
+          <thead><tr class="th-hosp"><th class="col-header">Asistencia</th><th>Eventos/Año</th><th>Límite por Evento</th><th>Causa</th></tr></thead>
+          <tbody>
+            <tr><td>Teledoctor</td><td>Sin límite</td><td>Sin límite</td><td>Cualquier causa</td></tr>
+            <tr><td>Traslado Médico Terrestre en Ambulancia</td><td>2</td><td>$250</td><td>Accidente / Enfermedad</td></tr>
+            <tr><td>Médica Domiciliar</td><td>2</td><td>$100</td><td>Accidente / Enfermedad</td></tr>
+            <tr><td>Transporte para asistir a citas médicas</td><td>2</td><td>25 km</td><td>Preventivo</td></tr>
+            <tr><td>Enfermería a Domicilio (4 h)</td><td>4 · 30 días entre eventos</td><td>4 horas</td><td>Hospitalización &gt; 3 días</td></tr>
+            <tr><td>Laboratorio (heces, hematología completa, orina)</td><td>2</td><td>$50</td><td>Preventivo</td></tr>
+            <tr><td>Traslado a domicilio por hospitalización en ambulancia</td><td>1</td><td>30 km</td><td>Hospitalización &gt; 3 días</td></tr>
+            <tr><td>Envío de artículos de aseo personal al lugar de internación</td><td>1</td><td>$30</td><td>Hospitalización &gt; 3 días</td></tr>
+            <tr><td>Traslado ida y vuelta de grupo familiar/amigos</td><td>1</td><td>30 km</td><td>Hospitalización &gt; 3 días</td></tr>
+            <tr><td>Servicio de mensajería (documentos o paquetes pequeños)</td><td>2</td><td>25 km</td><td>Hospitalización &gt; 3 días</td></tr>
+            <tr><td>Orientación Nutricional Telefónica post-hospitalización</td><td>3</td><td>30 minutos</td><td>Hospitalización &gt; 3 días</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="planes-nota">💡 La cobertura básica protege al asegurado en <strong>todo momento y lugar</strong>. Los servicios de asistencia aplican únicamente dentro de <strong>Costa Rica</strong>.</div>
+    </div>
+    <div class="content-card contactos-card">
+      <h3><span class="icon-dot-hosp"></span>📞 Teléfonos y Contactos</h3>
+      <ul class="contactos-list">
+        <li><a class="tel" href="tel:+50641010007">4101-0007</a><span class="desc">SAC, asistencias y reclamos</span></li>
+        <li><a class="tel" href="mailto:gestiones@iseguros.cr">gestiones@iseguros.cr</a><span class="desc">Reporte de reclamos</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="hosp-planes" class="content-panel h3-hosp">
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>Planes y Primas — Tasa Mensual del Cliente</h3>
+      <div class="planes-table-wrap">
+        <table class="planes-tbl">
+          <thead><tr class="th-hosp"><th class="col-header">Plan</th><th>Cobertura (hospitalización)</th><th>Monto</th><th>18 a 64 años</th><th>65 a 74 años</th><th>75 años o más</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Plan 1</strong></td><td>3 a 15 días (1 cuota)</td><td>₡220.000</td><td class="prima-val">₡2.600</td><td>₡4.300</td><td>₡7.200</td></tr>
+            <tr><td><strong>Plan 2</strong></td><td>16 a 30 días (2 cuotas)</td><td>₡330.000</td><td class="prima-val">₡3.000</td><td>₡5.600</td><td>₡9.800</td></tr>
+            <tr><td><strong>Plan 3</strong></td><td>31 a 45 días (3 cuotas)</td><td>₡440.000</td><td class="prima-val">₡3.400</td><td>₡7.000</td><td>₡12.300</td></tr>
+            <tr><td><strong>Plan 4</strong></td><td>46 días o más (4 cuotas)</td><td>₡550.000</td><td class="prima-val">₡3.800</td><td>₡8.300</td><td>₡14.900</td></tr>
+            <tr><td><strong>Plan Retención</strong></td><td>—</td><td>₡137.500</td><td class="prima-val">₡1.700</td><td>₡2.500</td><td>₡4.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="planes-nota">💡 La renta se paga por el periodo definido según los días de hospitalización. <strong>Momentos de oferta:</strong> apertura de crédito y apertura de tarjeta. <strong>Canal:</strong> sucursales del Banco Nacional.</div>
+    </div>
+  </div>
+
+  <div id="hosp-activacion" class="content-panel h3-hosp">
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>🚀 Activación del Seguro</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:16px;">La contratación de Protección Hospitalaria se gestiona desde el sistema principal <strong>S2+</strong> del Banco Nacional.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="accion-card accion-card-hosp">
+          <div class="accion-card-title hosp">🔐 Activación S2+</div>
+          <p>Plataforma S2+ — acceso con correo institucional del BNCR.</p>
+          <a href="https://s2plus.online/private" target="_blank" class="accion-link accion-link-hosp">Ir a Plataforma →</a>
+        </div>
+        <div class="accion-card accion-card-hosp" style="border-style:dashed;">
+          <div class="accion-card-title hosp">🕒 Momentos de oferta</div>
+          <p>Apertura de crédito y apertura de tarjeta, en sucursales del Banco Nacional.</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>¿Cómo Reclamar?</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:12px;">Reporte el evento al correo <strong>gestiones@iseguros.cr</strong> o al teléfono <strong>(+506) 4101-0007</strong>. Documentos requeridos:</p>
+      <ul class="exclusion-list" style="padding-left:20px;">
+        <li>Formulario de reclamación de la aseguradora, completo y firmado.</li>
+        <li>Copia del documento de identidad del asegurado (extranjeros: identidad o pasaporte válido).</li>
+        <li>Orden de hospitalización emitida por el médico (nombre e identificación del asegurado, razón, fecha, médico y contacto).</li>
+        <li>Factura del hospital o documento que demuestre la fecha y hora de ingreso y de salida.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="hosp-cierre" class="content-panel h3-hosp">
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>🎙️ Guion de Venta</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.75;">"Una hospitalización no solo afecta la salud, también las finanzas: siguen llegando las cuotas del crédito, la tarjeta y los gastos del hogar. Con <strong>Protección Hospitalaria</strong>, el Banco le paga una renta según los días que esté internado —por accidente o enfermedad— para que cubra sus obligaciones con tranquilidad. Desde <strong>₡1.700 al mes</strong>. ¿Le muestro el plan que mejor se ajusta a usted?"</p>
+    </div>
+    <div class="content-card">
+      <h3><span class="icon-dot-hosp"></span>💬 Manejo de Objeciones</h3>
+      <div class="objecion-item"><div class="objecion-q">"Ya tengo la CCSS / un seguro médico."</div><div class="objecion-a">"La CCSS cubre la atención médica, pero no le paga las cuotas del crédito, la tarjeta ni los gastos del hogar mientras está internado. Protección Hospitalaria le da una renta en efectivo para cubrir esas obligaciones."</div></div>
+      <div class="objecion-item"><div class="objecion-q">"¿Y si nunca me hospitalizan?"</div><div class="objecion-a">"Es la tranquilidad de saber que, si sucede —por accidente o enfermedad—, no descuidará sus pagos ni afectará su historial crediticio. Desde ₡1.700 al mes."</div></div>
+      <div class="objecion-item"><div class="objecion-q">"Me parece un gasto extra."</div><div class="objecion-a">"Hay planes desde ₡1.700 al mes (Retención) y el Plan 1 desde ₡2.600, con montos de hasta ₡550.000 según el plan. Es muy accesible frente al alivio que brinda en un momento difícil."</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ZONA ASESOR: PROTECCIÓN HOSPITALARIA ── -->
+<div class="asesor-data" data-product="hosp" style="display:none;">
+  <div class="asesor-tab-content h3-hosp" data-asesor-tab="por-que">
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Por qué Promover Protección Hospitalaria</h3><p style="font-size:14px;color:var(--text-mid);line-height:1.7;">Una hospitalización inesperada golpea las finanzas del cliente: se acumulan cuotas de crédito, tarjeta y gastos del hogar mientras baja el ingreso. Este seguro le paga una renta en efectivo según los días de internación, protegiendo su estabilidad financiera y su historial crediticio. Es un complemento ideal para clientes con crédito o tarjeta del Banco.</p></div>
+    <div class="content-card" style="background:linear-gradient(135deg,var(--ho-ultra),#FFF5F7);border-left:4px solid var(--ho-mid);"><h3><span class="icon-dot-hosp"></span>💎 Por qué el cliente debe adquirirlo</h3>
+      <div class="coverage-item hosp"><strong>💧 Alivio financiero inmediato</strong><p>Renta en efectivo para cubrir cuotas y gastos mientras está hospitalizado, por accidente o enfermedad.</p></div>
+      <div class="coverage-item hosp"><strong>🛡️ Protege su crédito</strong><p>Evita atrasos en el pago del crédito y la tarjeta durante la hospitalización.</p></div>
+      <div class="coverage-item hosp"><strong>💰 Accesible</strong><p>Planes desde ₡1.700 al mes, con montos de hasta ₡550.000 según el plan.</p></div>
+      <div class="coverage-item hosp"><strong>🚑 Asistencias incluidas</strong><p>Teledoctor, ambulancia, médica domiciliar, enfermería y más, sin costo adicional.</p></div>
+    </div>
+  </div>
+  <div class="asesor-tab-content h3-hosp" data-asesor-tab="perfiles">
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Perfiles Ideales del Cliente</h3>
+      <div class="coverage-item hosp"><strong>💳 Clientes con crédito o tarjeta del Banco</strong><p>Personas con obligaciones financieras mensuales que se verían afectadas por una hospitalización.</p></div>
+      <div class="coverage-item hosp"><strong>👨‍👩‍👧 Jefes de hogar y trabajadores independientes</strong><p>Cuyo ingreso se reduce si deben ausentarse por internación.</p></div>
+      <div class="coverage-item hosp"><strong>🧓 Adultos mayores</strong><p>Con mayor probabilidad de hospitalización por enfermedad; hay planes por rango de edad.</p></div>
+    </div>
+  </div>
+  <div class="asesor-tab-content h3-hosp" data-asesor-tab="momentos">
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Momentos Clave para Ofrecerlo</h3>
+      <div class="coverage-item hosp"><strong>💳 Apertura de crédito</strong><p>Al formalizar un crédito, proteja la capacidad de pago del cliente ante una hospitalización.</p></div>
+      <div class="coverage-item hosp"><strong>🪪 Apertura de tarjeta</strong><p>Momento ideal para vincular la protección a la nueva obligación financiera.</p></div>
+      <div class="coverage-item hosp"><strong>🏦 Atención en sucursal</strong><p>Canal principal de colocación de este producto.</p></div>
+    </div>
+  </div>
+  <div class="asesor-tab-content h3-hosp" data-asesor-tab="guion">
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Guion de Venta</h3><p style="font-size:14px;color:var(--text-mid);line-height:1.75;">"Una hospitalización no solo afecta la salud, también las finanzas: siguen llegando las cuotas del crédito, la tarjeta y los gastos del hogar. Con Protección Hospitalaria, el Banco le paga una renta según los días que esté internado —por accidente o enfermedad— para que cubra sus obligaciones con tranquilidad. Desde ₡1.700 al mes. ¿Le muestro el plan que mejor se ajusta a usted?"</p></div>
+  </div>
+  <div class="asesor-tab-content h3-hosp" data-asesor-tab="objeciones">
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Manejo de Objeciones</h3>
+      <div class="objecion-item"><div class="objecion-q">"Ya tengo la CCSS / un seguro médico."</div><div class="objecion-a">"La CCSS cubre la atención médica, pero no le paga las cuotas del crédito, la tarjeta ni los gastos del hogar mientras está internado. Este seguro le da una renta en efectivo para esas obligaciones."</div></div>
+      <div class="objecion-item"><div class="objecion-q">"¿Y si nunca me hospitalizan?"</div><div class="objecion-a">"Es la tranquilidad de saber que, si sucede, no descuidará sus pagos ni afectará su historial crediticio. Desde ₡1.700 al mes."</div></div>
+      <div class="objecion-item"><div class="objecion-q">"Me parece un gasto extra."</div><div class="objecion-a">"Hay planes desde ₡1.700 al mes, con montos de hasta ₡550.000. Es muy accesible frente al alivio que brinda."</div></div>
+    </div>
+  </div>
+  <div class="asesor-tab-content h3-hosp" data-asesor-tab="exclusiones">
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Exclusiones Generales</h3>
+      <div class="coverage-item hosp"><strong>⚔️ Guerra, terrorismo y conmociones</strong><p>Guerra civil o internacional, terrorismo, motín, huelga, movimiento subversivo o conmociones populares.</p></div>
+      <div class="coverage-item hosp"><strong>🌋 Desastres naturales</strong><p>Erupción volcánica, temblor o cualquier otro desastre natural.</p></div>
+      <div class="coverage-item hosp"><strong>⚠️ Actos del asegurado</strong><p>Actos premeditados o intencionales, culpa grave, actos delictivos o incumplimiento de la ley; participación en riñas o peleas.</p></div>
+      <div class="coverage-item hosp"><strong>🍷 Alcohol y drogas</strong><p>Consumo de alcohol, estupefacientes o drogas no prescritas por un médico.</p></div>
+      <div class="coverage-item hosp"><strong>🩹 Condición preexistente</strong><p>Cualquier condición preexistente queda excluida.</p></div>
+      <div class="coverage-item hosp"><strong>🪂 Actividades de alto riesgo</strong><p>Deportes o actividades que agravan el riesgo (aviación no comercial, motos no habituales, buceo, alpinismo, paracaidismo, deporte profesional, entre otros).</p></div>
+      <div class="coverage-item hosp"><strong>🦠 Epidemia / pandemia</strong><p>Epidemia, endemia o pandemia declaradas por autoridades locales o internacionales.</p></div>
+      <div class="coverage-item hosp"><strong>🧠 Salud mental</strong><p>Tratamientos psiquiátricos o psicológicos, trastornos mentales, depresión, neurosis o psicosis.</p></div>
+    </div>
+    <div class="content-card"><h3><span class="icon-dot-hosp"></span>Exclusiones de la Renta por Hospitalización</h3>
+      <div class="coverage-item hosp"><strong>💉 Cirugía estética y embarazo</strong><p>Cirugía plástica/cosmética (salvo accidente cubierto dentro de 6 meses); embarazo, parto, cesárea o aborto (salvo accidentes cubiertos).</p></div>
+      <div class="coverage-item hosp"><strong>🦷 Dental y chequeos</strong><p>Tratamientos dentales (salvo accidente); reposo, chequeos generales, manejo de dolor, cuarentena o aislamiento.</p></div>
+      <div class="coverage-item hosp"><strong>⚖️ Obesidad e internaciones no hospitalarias</strong><p>Obesidad mórbida o reducción de peso; internación en hoteles, termas, asilos, sanatorios, casas de reposo o centros para enfermos mentales/adicciones.</p></div>
+      <div class="coverage-item hosp"><strong>🌿 Otros</strong><p>Medicina natural/alternativa/deportiva/musicoterapia; enfermedades de transmisión sexual; amigdalitis, adenoiditis o hernias (salvo amparo continuo de 4 meses previos).</p></div>
+    </div>
+  </div>
+</div>
+
 <!-- ── BOTÓN FLOTANTE ZONA ASESOR ── -->
 <button class="asesor-btn-float" onclick="openAsesor()">🎓 Zona Asesor</button>
 
@@ -3669,7 +3867,8 @@ var PRODUCT_NAMES = {
   "rdh": "🏥 RDH · Renta Diaria Hospitalización",
   "ap":  "👨‍👩‍👧 AP Asistencias · Renta Alimenticia",
   "senior": "🦴 SENIOR · Accidentes Personales",
-  "tiquitos": "🐸 Tiquitos · Seguro Estudiantil"
+  "tiquitos": "🐸 Tiquitos · Seguro Estudiantil",
+  "hosp": "🩺 Protección Hospitalaria"
 };
 function getCurrentProduct() {
   var panels = document.querySelectorAll(".panel.active");
