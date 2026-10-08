@@ -1200,7 +1200,7 @@ const PLANES = {
   'SENIOR': [ {l:'18-65 años',v:5300},{l:'66-75 años',v:7100},{l:'76-85 años',v:9200},{l:'86+ años',v:21700} ],
   'AP': [ {l:'18-64 años',v:2900},{l:'65-74 años',v:9350},{l:'75+ años',v:18450} ],
   'Tiquitos': [ {l:'Plan 1',v:9100},{l:'Plan 2',v:10200},{l:'Plan 3',v:11500},{l:'Plan 4',v:13500},{l:'Plan 5',v:16500} ],
-  'Protección Hospitalaria': [ {l:'18-64 · Plan 1',v:2600},{l:'18-64 · Plan 2',v:3000},{l:'18-64 · Plan 3',v:3400},{l:'18-64 · Plan 4',v:3800},{l:'65-74 · Plan 1',v:4300},{l:'65-74 · Plan 2',v:5600},{l:'65-74 · Plan 3',v:7000},{l:'65-74 · Plan 4',v:8300},{l:'75+ · Plan 1',v:7200},{l:'75+ · Plan 2',v:9800},{l:'75+ · Plan 3',v:12300},{l:'75+ · Plan 4',v:14900} ]
+  'Protección Hospitalaria': [ {l:'Mensual · 18-64 · Plan 1',v:2600},{l:'Mensual · 18-64 · Plan 2',v:3000},{l:'Mensual · 18-64 · Plan 3',v:3400},{l:'Mensual · 18-64 · Plan 4',v:3800},{l:'Mensual · 65-74 · Plan 1',v:4300},{l:'Mensual · 65-74 · Plan 2',v:5600},{l:'Mensual · 65-74 · Plan 3',v:7000},{l:'Mensual · 65-74 · Plan 4',v:8300},{l:'Mensual · 75+ · Plan 1',v:7200},{l:'Mensual · 75+ · Plan 2',v:9800},{l:'Mensual · 75+ · Plan 3',v:12300},{l:'Mensual · 75+ · Plan 4',v:14900},{l:'Anual · 18-64 · Plan 1',v:31200},{l:'Anual · 18-64 · Plan 2',v:36000},{l:'Anual · 18-64 · Plan 3',v:40800},{l:'Anual · 18-64 · Plan 4',v:45600},{l:'Anual · 65-74 · Plan 1',v:51600},{l:'Anual · 65-74 · Plan 2',v:67200},{l:'Anual · 65-74 · Plan 3',v:84000},{l:'Anual · 65-74 · Plan 4',v:99600},{l:'Anual · 75+ · Plan 1',v:86400},{l:'Anual · 75+ · Plan 2',v:117600},{l:'Anual · 75+ · Plan 3',v:147600},{l:'Anual · 75+ · Plan 4',v:178800} ]
 };
 const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
@@ -1252,7 +1252,7 @@ function load(){
 
 const money = n => '₡' + Math.round(n).toLocaleString('es-CR');
 const el = id => document.getElementById(id);
-const topePrima = p => p === 'RDH' ? 90000 : 30000;
+const topePrima = p => p === 'RDH' ? 90000 : (p === 'Protección Hospitalaria' ? 200000 : 30000);
 const periodoTxt = () => MESES[+el('mes').value] + ' ' + el('anio').value;
 
 /* ================= LÓGICA (idéntica al Excel) ================= */
@@ -1263,7 +1263,7 @@ function evalRow(r){
   else if(prima > topePrima(r.prod))          estado = 'error';
   else if(r.c1 &amp;&amp; r.c2){
     estado = 'ok';
-    facturado = (r.prod === 'RDH' &amp;&amp; prima > 30000) ? prima / 12 : prima;
+    facturado = ((r.prod === 'RDH' || r.prod === 'Protección Hospitalaria') &amp;&amp; prima > 30000) ? prima / 12 : prima;
   } else                                      estado = 'no';
   return {estado, facturado};
 }
@@ -1774,7 +1774,7 @@ const FERIADOS_CR = {
 };
 
 /* ===== Catálogo BNCR: 7 seguros separados =====
-   - Solo RDH tiene prima Mensual y Anual (2 seguros).
+   - RDH y Protección Hospitalaria tienen prima Mensual y Anual.
    - FRE tiene Colones y Dólares (2 seguros). Ambos con prima mensual.
    - Senior y AP: prima mensual. Tiquitos: prima ANUAL (cargo único al año).
    periodicidad: 'Mensual' | 'Anual'   moneda: 'CRC' | 'USD'
@@ -1792,7 +1792,10 @@ const CATALOGO = [
   { id:'rdh_anu', nombre:'RDH · Renta Diaria Hospitalaria', variante:'Anual', moneda:'CRC', periodicidad:'Anual', aportePct:0.35, prioridad:2, rep:false,
     planes:[ {plan:'Plan 1',primaMes:5800},{plan:'Plan 2',primaMes:6350},{plan:'Plan 3',primaMes:6850} ], sel:0 },
 
-  { id:'hosp', nombre:'Protección Hospitalaria', variante:'', moneda:'CRC', periodicidad:'Mensual', aportePct:0.30, prioridad:3, rep:true,
+  { id:'hosp', nombre:'Protección Hospitalaria', variante:'Mensual', moneda:'CRC', periodicidad:'Mensual', aportePct:0.30, prioridad:3, rep:true,
+    planes:[ {plan:'Plan 1',primaMes:2600},{plan:'Plan 2',primaMes:3000},{plan:'Plan 3',primaMes:3400},{plan:'Plan 4',primaMes:3800} ], sel:0 },
+
+  { id:'hosp_anu', nombre:'Protección Hospitalaria', variante:'Anual', moneda:'CRC', periodicidad:'Anual', aportePct:0.30, prioridad:3, rep:false,
     planes:[ {plan:'Plan 1',primaMes:2600},{plan:'Plan 2',primaMes:3000},{plan:'Plan 3',primaMes:3400},{plan:'Plan 4',primaMes:3800} ], sel:0 },
 
   { id:'senior', nombre:'SENIOR', variante:'', moneda:'CRC', periodicidad:'Mensual', aportePct:0.25, prioridad:3, rep:true,
@@ -3572,19 +3575,22 @@ calcularDistribucion();
 
   <div id="hosp-planes" class="content-panel h3-hosp">
     <div class="content-card">
-      <h3><span class="icon-dot-hosp"></span>Planes y Primas Mensuales</h3>
+      <h3><span class="icon-dot-hosp"></span>Planes y Primas (Mensual y Anual)</h3>
       <div class="planes-table-wrap">
         <table class="planes-tbl">
-          <thead><tr class="th-hosp"><th class="col-header">Cobertura / Prima mensual</th><th>Plan 1</th><th>Plan 2</th><th>Plan 3</th><th>Plan 4</th></tr></thead>
+          <thead><tr class="th-hosp"><th class="col-header">Cobertura / Prima</th><th>Plan 1</th><th>Plan 2</th><th>Plan 3</th><th>Plan 4</th></tr></thead>
           <tbody>
             <tr class="prima-row"><td><strong>Beneficio por cuota — hospitalización por enfermedad o accidente</strong></td><td class="prima-val">₡220.000</td><td class="prima-val">₡330.000</td><td class="prima-val">₡440.000</td><td class="prima-val">₡550.000</td></tr>
             <tr><td>Prima mensual · 18 a 64 años</td><td>₡2.600</td><td>₡3.000</td><td>₡3.400</td><td>₡3.800</td></tr>
             <tr><td>Prima mensual · 65 a 74 años</td><td>₡4.300</td><td>₡5.600</td><td>₡7.000</td><td>₡8.300</td></tr>
             <tr><td>Prima mensual · 75 años o más</td><td>₡7.200</td><td>₡9.800</td><td>₡12.300</td><td>₡14.900</td></tr>
+            <tr><td>Prima anual · 18 a 64 años</td><td>₡31.200</td><td>₡36.000</td><td>₡40.800</td><td>₡45.600</td></tr>
+            <tr><td>Prima anual · 65 a 74 años</td><td>₡51.600</td><td>₡67.200</td><td>₡84.000</td><td>₡99.600</td></tr>
+            <tr><td>Prima anual · 75 años o más</td><td>₡86.400</td><td>₡117.600</td><td>₡147.600</td><td>₡178.800</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="planes-nota">💡 El cliente elige un <strong>plan (1 a 4)</strong> y paga la prima mensual según su edad. <strong>Momentos de oferta:</strong> apertura de crédito y de tarjeta. <strong>Canal:</strong> sucursales del Banco Nacional.</div>
+      <div class="planes-nota">💡 El cliente elige un <strong>plan (1 a 4)</strong> y la modalidad de pago: <strong>mensual o anual</strong> (la prima anual equivale a 12 mensualidades). La prima varía según la edad. <strong>Momentos de oferta:</strong> apertura de crédito y de tarjeta. <strong>Canal:</strong> sucursales del Banco Nacional.</div>
     </div>
     <div class="content-card">
       <h3><span class="icon-dot-hosp"></span>Tabla de Indemnización — según días de hospitalización</h3>
