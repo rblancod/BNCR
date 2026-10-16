@@ -680,16 +680,15 @@ table { max-width: 100%; }
 .cc-incentivos::before{background:linear-gradient(90deg,#C8911B,#F2C419);}
 .cc-incentivos h2{color:#B07A12;}
 .cc-incentivos .card-icon{color:#E0A800;}
-.incentivos-wrap{max-width:900px;margin:0 auto;}
-.incentivos-head{text-align:center;margin-bottom:26px;}
-.incv-head-icon{font-size:40px;line-height:1;margin-bottom:6px;}
-.incentivos-head h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--bn-blue);font-size:32px;margin:0 0 6px;}
-.incentivos-head p{color:var(--text-mid);font-size:14.5px;margin:0;}
-.incentivos-grid{display:flex;flex-direction:column;gap:30px;align-items:center;}
-.incv-card{display:block;margin:0;width:100%;max-width:840px;background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
-.incv-cap{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:15px;color:#fff;background:linear-gradient(90deg,var(--bn-blue),var(--bn-blue-mid));padding:11px 20px;text-align:center;}
+.incentivos-wrap{width:100%;max-width:900px;margin:0 auto;}
+.incentivos-head{text-align:center;margin-bottom:clamp(18px,4vw,28px);padding:0 4px;}
+.incv-head-icon{font-size:clamp(32px,8vw,42px);line-height:1;margin-bottom:6px;}
+.incentivos-head h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--bn-blue);font-size:clamp(23px,6vw,34px);line-height:1.05;margin:0 0 6px;}
+.incentivos-head p{color:var(--text-mid);font-size:clamp(13px,3.4vw,15px);line-height:1.5;margin:0;}
+.incentivos-grid{display:flex;flex-direction:column;gap:clamp(18px,4vw,30px);align-items:center;width:100%;}
+.incv-card{display:block;margin:0;width:100%;max-width:840px;background:#fff;border-radius:clamp(12px,3vw,18px);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+.incv-cap{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:clamp(12px,3.2vw,15px);line-height:1.25;color:#fff;background:linear-gradient(90deg,var(--bn-blue),var(--bn-blue-mid));padding:clamp(8px,2.4vw,12px) 16px;text-align:center;}
 .incv-card img{display:block;width:100%;height:auto;}
-@media(max-width:700px){.incentivos-head h2{font-size:26px;}.incv-cap{font-size:13px;}}
 .dash-frame{background:#eef3f9;}
 .calc-back{display:inline-flex;align-items:center;gap:8px;background:var(--bn-blue-mid);color:#fff;border:none;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.5px;padding:10px 20px;border-radius:30px;cursor:pointer;margin-bottom:14px;transition:background .2s;}
 .calc-back:hover{background:var(--bn-blue);}
